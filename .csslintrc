@@ -1,0 +1,8 @@
+{
+  "adjoining-classes": false,
+  "box-sizing" : false,
+  "floats" : false,
+  "font-sizes" : false,
+  "box-model" : false,
+  "important" : false
+}

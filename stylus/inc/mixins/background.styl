@@ -1,0 +1,59 @@
+// =============================================================================
+// stylus/inc/mixins/background.styl
+// -----------------------------------------------------------------------------
+// Mixins for styling background images, gradients, et cetera.
+// =============================================================================
+
+// =============================================================================
+// TABLE OF CONTENTS
+// -----------------------------------------------------------------------------
+//  a. Rails asset pipeline 
+//  b. Gradients
+//    a. Horizontal
+//    b. Vertical
+//    c. Vertical (3 Colors)
+//    d. Directional
+//    e. Striped
+// =============================================================================
+
+
+// Rails asset pipeline 
+// =============================================================================
+_rails-assets-background-image(imagePath)
+  background-image: image-url( imagePath )
+
+// Gradients
+// =============================================================================
+// Horizontal
+_gradient-horizontal(startColor = #555, endColor = #333)
+  background-color: endColor
+  background-image: -webkit-linear-gradient(left, startColor, endColor)
+  background-image: linear-gradient(left, startColor, endColor)
+  background-repeat: repeat-x
+
+// Vertical
+_gradient-vertical(startColor = #555, endColor = #333)
+  background-color: mix(startColor, endColor, 60%)
+  background-image: -webkit-linear-gradient(top, startColor, endColor)
+  background-image: linear-gradient(top, startColor, endColor)
+  background-repeat: repeat-x
+
+// Vertical (3 colors)
+_gradient-vertical-three-colors(startColor = #00b3ee, midColor = #7a43b6, colorStop = 50%, endColor = #c3325f)
+  background-color: mix(midColor, endColor, 80%)
+  background-image: -webkit-linear-gradient(startColor, midColor colorStop, endColor)
+  background-image: linear-gradient(startColor, midColor colorStop, endColor)
+  background-repeat: no-repeat
+
+// Directional
+_gradient-directional(startColor = #555, endColor = #333, deg = 45deg)
+  background-color: endColor
+  background-image: -webkit-linear-gradient(deg, startColor, endColor)
+  background-image: linear-gradient(deg, startColor, endColor)
+  background-repeat: repeat-x
+
+// Striped
+_gradient-striped(color, angle = -45deg)
+  background-color: color
+  background-image: -webkit-linear-gradient(angle, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: linear-gradient(angle, rgba(255, 255, 255, 0.15) 25%, rgba(255, 255, 255, 0) 25%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, rgba(255, 255, 255, 0) 75%, rgba(255, 255, 255, 0));

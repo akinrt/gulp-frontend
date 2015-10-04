@@ -1,0 +1,77 @@
+// =============================================================================
+// stylus/inc/mixins/typo.styl
+// -----------------------------------------------------------------------------
+// Mixins for various type-based styles.
+// =============================================================================
+
+// =============================================================================
+// TABLE OF CONTENTS
+// -----------------------------------------------------------------------------
+//  a. Fonts
+//  b. Font Size
+//  c. Text Overflow
+//  d. Placeholder Text
+//  e. Font smoothing
+//  f. Text overflow
+// =============================================================================
+
+// Fonts
+// =============================================================================
+_font-family-base()
+  font-family: fontsBase
+
+// Values
+_font-shorthand(size = baseFontSize, weight = normal, lineHeight = baseLineHeight)
+  _font-size(size)
+  font-weight: weight
+  line-height: lineHeight
+
+// Defaults
+_font-base(size = baseFontSize, weight = normal, lineHeight = baseLineHeight)
+  _font-family-base()
+  _font-shorthand(size, weight, lineHeight)
+
+// Font Size
+// =============================================================================
+// Provides rem unit sizing with a px fallback.
+// Must set html font-size to 62.5% since base 10 is used for px fallback.
+// 1. $sizeValue of 1.6 results in 16px and 1.6rem.
+_font-size(sizeValue = 1.6) // 1
+  font-size: (sizeValue * 10) px
+  font-size: sizeValue rem
+
+// Text Overflow
+// =============================================================================
+// Requires 'inline-block' or 'block' for proper styling.
+_text-overflow()
+  overflow: hidden
+  text-overflow: ellipsis
+  white-space: nowrap
+
+// Placeholder Text
+// =============================================================================
+_placeholder(color = placeholderText)
+  &:-moz-placeholder
+    color: color
+  &:-ms-input-placeholder
+    color: color
+  &::-webkit-input-placeholder
+    color: color
+
+_root-placeholder(color = placeholderText)
+  :-moz-placeholder
+    color: color
+  :-ms-input-placeholder
+    color: color
+  ::-webkit-input-placeholder
+    color: color
+
+// Font smoothing
+// =============================================================================
+_font-smoothing(value = true)
+  if value
+    -webkit-font-smoothing: antialiased
+    -moz-osx-font-smoothing: grayscale
+  else
+    -webkit-font-smoothing: subpixel-antialiased
+    -moz-osx-font-smoothing: auto

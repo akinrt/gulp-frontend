@@ -1,0 +1,68 @@
+// =============================================================================
+// stylus/inc/mixins/css3.styl
+// -----------------------------------------------------------------------------
+// Various CSS3 mixins along with some supplemental mixins for particular
+// styles such as opacity.
+// =============================================================================
+
+// =============================================================================
+// TABLE OF CONTENTS
+// -----------------------------------------------------------------------------
+//  a. Transformations
+//    a. Rotate
+//    b. Scale
+//    c. Translate
+//    d. Translate 3D
+//    e. Skew
+//  b. Resize Anything
+//  c. Content Columns
+//  d. Optional Hypenation
+//  e. Opacity
+// =============================================================================
+
+// Transformations
+// =============================================================================
+_rotate(degrees)
+  transform: rotate(degrees)
+
+_rotate-y(degrees)
+  transform: rotateY(degrees)
+  transform-style: preserve-3d
+
+_scale(ratio)
+  transform: scale(ratio)
+
+_translate(x, y)
+  transform translate(x, y)
+
+_translate3d(x, y, z)
+  transform: translate3d(x, y, z)
+
+_skew(x, y)
+  transform: skew(x, y)
+
+// Resize Anything
+// =============================================================================
+// 1. Options: 'horizontal', 'vertical', or 'both'.
+// 2. Safari fix.
+_resizable(direction)
+  resize: direction; // 1
+  overflow: auto; // 2
+
+// Content Columns
+// =============================================================================
+_content-columns(columnCount = 2, columnGap = 3em, columnRule = 1px solid #e5e5e5)
+  column-count: columnCount
+  column-gap: columnGap
+  column-rule: columnRule
+
+// Optional hypenation
+// =============================================================================
+_hyphens(mode = auto)
+  word-wrap: break-word
+  hyphens: mode
+
+// Opacity
+// =============================================================================
+_opacity(opacity = 0.5)
+  opacity: opacity

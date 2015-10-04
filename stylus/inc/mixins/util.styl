@@ -1,0 +1,83 @@
+// =============================================================================
+// stylus/inc/mixins/util.styl
+// -----------------------------------------------------------------------------
+// Mixins for getting the dirty work done.
+// =============================================================================
+
+// =============================================================================
+// TABLE OF CONTENTS
+// -----------------------------------------------------------------------------
+//  a. Clearfix
+//  b. Image Replacement (Hide Text)
+//  c. Center Block Element
+//  d. Sizing Shortcuts
+//    a. Rectangles
+//    b. Square
+//  e. Positioning shortcuts
+// =============================================================================
+
+// Clearfix
+// =============================================================================
+_clearfix()
+  *zoom: 1
+  
+  &:before,
+  &:after
+    display: table
+    content: ""
+  
+  &:after
+    clear: both
+
+// Image Replacement (Hide Text)
+// =============================================================================
+_hide-text()
+  font: 0/0 a
+  color: transparent
+  text-shadow: none
+  background-color: transparent
+  border: 0
+
+// Center Block Element
+// =============================================================================
+_center-block()
+  display: block
+  margin-left: auto
+  margin-right: auto
+
+// Sizing Shortcuts
+// =============================================================================
+// Rectangles
+_size(width, height)
+  width: width
+  height: height
+
+// Square
+_square(size) 
+  _size(size, size)
+
+// Positioning shortcuts
+// =============================================================================
+// Synopsis
+// fixed: <pos> [n] <pos> [n]
+_pos(type, args)
+  i = 0
+  position: unquote(type)
+  for j in (1..4)
+    if length(args) > i
+      {args[i]}: args[i + 1] is a 'unit' ? args[i += 1] : 0
+    i += 1
+
+// Ex
+// fixed: top left
+// fixed: top 5px left
+// fixed: top left 5px
+// fixed: top 5px left 5px
+_fixed()
+  _pos('fixed', arguments)
+
+_absolute()
+  _pos('absolute', arguments)
+
+_relative()
+  _pos('relative', arguments)
